@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://mobilebarcode/locale/phrases.dtd">
+<prefwindow id="mobilebarcode-prefs"
+	title="&mobilebarcode.prefs.title;"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<prefpane id="mobilebarcode-prefs-pane" label="&mobilebarcode.prefs.title;">
+		<preferences>
+			<preference id="pref_size" name="mobilebarcode.size" type="string"/>
+			<preference id="pref_type" name="mobilebarcode.type" type="string"/>
+		</preferences>
+
+		<vbox>
+			<groupbox align="center">
+				<caption label="&mobilebarcode.prefs.style;"/>
+				<radiogroup preference="pref_type" id="type">
+					<radio label="&mobilebarcode.qrcode;" value="QR"
+						src="chrome://mobilebarcode/content/qr.png"
+						accesskey="&mobilebarcode.prefs.qrcode.accesskey;" />
+					<radio label="&mobilebarcode.datamatrix;" value="DM"
+						src="chrome://mobilebarcode/content/dm.png"
+						accesskey="&mobilebarcode.prefs.datamatrix.accesskey;" />
+				</radiogroup>
+			</groupbox>
+			<groupbox align="center">
+				<caption label="&mobilebarcode.prefs.size;"/>
+				<radiogroup preference="pref_size" id="size">
+					<radio label="&mobilebarcode.prefs.s.label;" value="S"
+						accesskey="&mobilebarcode.prefs.s.accesskey;" />
+					<radio label="&mobilebarcode.prefs.m.label;" value="M"
+						accesskey="&mobilebarcode.prefs.m.accesskey;" />
+					<radio label="&mobilebarcode.prefs.l.label;" value="L"
+						accesskey="&mobilebarcode.prefs.l.accesskey;" />
+					<radio label="&mobilebarcode.prefs.xl.label;" value="XL"
+						accesskey="&mobilebarcode.prefs.xl.accesskey;" />
+					<radio label="&mobilebarcode.prefs.xxl.label;" value="XXL"
+						accesskey="&mobilebarcode.prefs.xxl.accesskey;" />
+				</radiogroup>
+			</groupbox>
+		</vbox>
+	</prefpane>
+
+</prefwindow>

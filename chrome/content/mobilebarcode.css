@@ -1,0 +1,15 @@
+statusbarpanel-iconic#mobilebarcode-status-panel
+{
+	margin: 0;
+	padding: 0;
+}
+image#mobilebarcode-status-image,
+image#mobilebarcode-context-selection-image,
+image#mobilebarcode-context-link-image
+{
+	margin: 20px;
+}
+tooltip#mobilebarcode-tooltip vbox
+{
+	background-color: white;
+}

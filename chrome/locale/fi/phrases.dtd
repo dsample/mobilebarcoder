@@ -1,0 +1,49 @@
+<!ENTITY mobilebarcode.title "Mobile Barcoder">
+<!ENTITY mobilebarcode.qrcode "QR Code">
+<!ENTITY mobilebarcode.datamatrix "Data Matrix">
+<!ENTITY mobilebarcode.barcode "Barcode">
+
+<!ENTITY mobilebarcode.about "About">
+<!ENTITY mobilebarcode.options "Options">
+
+<!ENTITY mobilebarcode.prefs.title "Mobile Barcoder Options">
+<!ENTITY mobilebarcode.prefs.style "Style">
+<!ENTITY mobilebarcode.prefs.size "Size">
+<!ENTITY mobilebarcode.prefs.s.label "Small">
+<!ENTITY mobilebarcode.prefs.m.label "Medium">
+<!ENTITY mobilebarcode.prefs.l.label "Large">
+<!ENTITY mobilebarcode.prefs.xl.label "XL">
+<!ENTITY mobilebarcode.prefs.xxl.label "XXL">
+
+<!ENTITY mobilebarcode.prefs.qrcode.accesskey "Q">
+<!ENTITY mobilebarcode.prefs.datamatrix.accesskey "D">
+<!ENTITY mobilebarcode.prefs.s.accesskey "S">
+<!ENTITY mobilebarcode.prefs.m.accesskey "M">
+<!ENTITY mobilebarcode.prefs.l.accesskey "L">
+<!ENTITY mobilebarcode.prefs.xl.accesskey "1">
+<!ENTITY mobilebarcode.prefs.xxl.accesskey "2">
+
+<!ENTITY mobilebarcode.createfromselection "Create barcode from selection">
+<!ENTITY mobilebarcode.createfromlink "Create barcode from link">
+
+<!ENTITY mobilebarcode.about.version "Version">
+<!ENTITY mobilebarcode.about.description "Helps to generate barcodes to zap with your compatible mobile device">
+<!ENTITY mobilebarcode.about.createdby "Created by">
+<!ENTITY mobilebarcode.about.contributors "Contributors">
+
+<!--
+OTHER PHASES TO BE TRANSLATED FOR THE ADDONS.MOZILLA.ORG SITE
+
+SUMMARY
+
+Mobile Barcoder generates 2D barcodes of URLs and text selections so that you can transfer that information to your mobile easily.
+
+DESCRIPTION
+
+A Mobile Code (aka 2D barcodes, QR Codes, Data Matrix, Semacode) is a simple way of transferring text and links from print or a computer screen onto a mobile device.  Mobile Barcoder fits into this process by integrating the generation process into Firefox.  
+
+Simply hover over the square target icon on the status bar to generate a barcode of the current page.  Right click on a link to generate a barcode for that link and the same goes for text selections.
+
+To read the barcode you will require an application on your phone.  Many phones now come with one already installed, but otherwise you can find many different options for almost any phone model.
+
+-->
