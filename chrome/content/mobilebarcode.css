@@ -8,6 +8,7 @@ image#mobilebarcode-context-selection-image,
 image#mobilebarcode-context-link-image
 {
 	margin: 20px;
+	background-color: white;
 }
 tooltip#mobilebarcode-tooltip vbox
 {
