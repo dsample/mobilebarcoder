@@ -7,11 +7,23 @@
 
 	<prefpane id="mobilebarcode-prefs-pane" label="&mobilebarcode.prefs.title;">
 		<preferences>
+			<preference id="pref_provider" name="mobilebarcode.provider" type="string"/>
 			<preference id="pref_size" name="mobilebarcode.size" type="string"/>
 			<preference id="pref_type" name="mobilebarcode.type" type="string"/>
 		</preferences>
 
 		<vbox>
+			<groupbox align="center">
+				<caption label="&mobilebarcode.prefs.provider;"/>
+				<menulist align="center" preference="pref_provider" id="provider">
+					<menupopup>
+						<menuitem label="Nokia" value="nokia" />
+						<menuitem label="Google (QR only)" value="google" />
+						<menuitem label="Kaywa" value="kaywa" />
+					</menupopup>
+				</menulist>
+			</groupbox>
+		
 			<groupbox align="center">
 				<caption label="&mobilebarcode.prefs.style;"/>
 				<radiogroup preference="pref_type" id="type">

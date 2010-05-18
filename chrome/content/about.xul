@@ -13,7 +13,7 @@
 		<hbox align="start">
 			<vbox flex="1">
 				<label id="extensionName" value="Mobile Barcoder" crop="right"/>
-				<label id="extensionVersion" value="version 0.2.0" crop="right"/>
+				<label id="extensionVersion" value="version 0.2.1" crop="right"/>
 				<description id="extensionDescription" value="Helps to generate barcodes to zap with your compatible mobile device"/>
 			</vbox>
 			<vbox id="logoBox">

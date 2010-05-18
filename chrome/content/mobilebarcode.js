@@ -3,10 +3,109 @@ var mobilebarcode = new Object();
 mobilebarcode.prefs = null;
 mobilebarcode.codetype = "";
 mobilebarcode.codesize = "";
+mobilebarcode.provider = "";
 
 //mobilebarcode.prefixURL = "http://mobilecodes.nokia.com/qr?MODULE_SIZE=6&name=&MARGIN=10&ENCODING=BYTE&MODE=TEXT&a=view&DATA=";
 //mobilebarcode.prefixURL = function(size="6", name="", margin="10", type="LINK")
-mobilebarcode.prefixURL = function(name, type)
+
+mobilebarcode.prefixURL = function(name,type)
+{
+	switch (mobilebarcode.provider)
+	{
+		case "kaywa":
+		break;
+		case "google":
+		break;
+		case "nokia":
+			return mobilebarcode.prefixURL_nokia(name,type);
+		break;
+		default:
+			return mobilebarcode.prefixURL_nokia(name,type);
+		break;
+	}
+}
+
+mobilebarcode.prefixURL_google = function(name, type)
+{
+	switch(mobilebarcode.codesize)
+	{
+		case "S":
+			sizenumber="200x200";
+		break;
+		case "M":
+			sizenumber="300x300";
+		break;
+		case "L":
+			sizenumber="400x400";
+		break;
+		case "XL":
+			sizenumber="500x500";
+		break;
+		case "XXL":
+			sizenumber="547x547";
+		break;
+		default:
+			sizenumber="300x300";
+		break;
+	}
+	/*
+	 *	Type: cht = qr
+	 *	Size: chs = <width>x<height>
+	 *	Encoding: choe = [UTF-8|Shift_JIS|ISO-8859-1]
+	 *	Error Correction: chld = <L|M|Q|H>|<margin>
+	 *	Data: chl = <data>
+	 */
+	
+	prefix = "http://chart.apis.google.com/chart?cht=qr&chld=M|4&choe=UTF-8&" +
+		"chs=" + sizenumber + "&chl=";
+
+	return prefix;
+};
+
+mobilebarcode.prefixURL_kaywa = function(name, type)
+{
+	// For text, maximum 250 characters
+	// Would be good to show a 'too big' image if they select too much text
+	
+	switch(mobilebarcode.codesize)
+	{
+		case "S":
+			sizenumber="5";
+		break;
+		case "M":
+			sizenumber="6";
+		break;
+		case "L":
+			sizenumber="7";
+		break;
+		case "XL":
+			sizenumber="8";
+		break;
+		case "XXL":
+			sizenumber="12";
+		break;
+		default:
+			sizenumber="6";
+		break;
+	}
+
+	switch(mobilebarcode.codetype)
+	{
+		case "DM":
+			prefix = "http://datamatrix.kaywa.com/img.php?" +
+				"s=" + sizenumber + "&d=";
+		break;
+		case "QR":
+		default:
+			prefix = "http://qrcode.kaywa.com/img.php?" +
+				"s=" + sizenumber + "&d=";
+		break;
+	}
+
+	return prefix;
+};
+
+mobilebarcode.prefixURL_nokia = function(name, type)
 {
 	switch(mobilebarcode.codetype)
 	{
@@ -147,6 +246,7 @@ mobilebarcode.init = function()
 	mobilebarcode.prefs.addObserver("", this, false);
 	
 	mobilebarcode.codetype = mobilebarcode.prefs.getCharPref("type").toUpperCase();
+	mobilebarcode.provider = mobilebarcode.prefs.getCharPref("provider").toUpperCase();
 	
 	menu = document.getElementById("contentAreaContextMenu");
 //	if (menu)
@@ -179,6 +279,7 @@ mobilebarcode.observe = function(subject, topic, data)
 //		break;
 //		case "type":
 			mobilebarcode.codetype = mobilebarcode.prefs.getCharPref("type").toUpperCase();
+			mobilebarcode.provider = mobilebarcode.prefs.getCharPref("provider").toUpperCase();
 //		break;
 //	}
 };

@@ -3,13 +3,13 @@
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 	<Description about="urn:mozilla:install-manifest">
 		<em:id>{A5C87640-F7CF-11DA-974D-0800200C9A66}</em:id>
-		<em:version>0.2.0</em:version>
+		<em:version>0.2.1</em:version>
 		<em:type>2</em:type><!-- type=extension -->
 		<em:targetApplication>
 			<Description>
 				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
 				<em:minVersion>1.0</em:minVersion>
-				<em:maxVersion>3.0.*</em:maxVersion>
+				<em:maxVersion>3.6.*</em:maxVersion>
 			</Description>
 		</em:targetApplication>
 		<em:name>Mobile Barcoder</em:name>
@@ -17,6 +17,7 @@
 		<em:creator>Duncan Sample</em:creator>
 		<em:contributor>James Carter</em:contributor>
 		<em:contributor>Miia Ranta</em:contributor>
+		<em:contributor>Jay Knight</em:contributor>
 		<em:homepageURL>http://www.sample.org.uk/mobilebarcoder/</em:homepageURL>
 		<em:iconURL>chrome://mobilebarcode/skin/icon.png</em:iconURL>
 <!--		<em:aboutURL>chrome://mobilebarcode/content/about.xul</em:aboutURL>-->
