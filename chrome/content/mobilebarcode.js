@@ -12,18 +12,20 @@ mobilebarcode.prefixURL = function(name,type)
 {
 	switch (mobilebarcode.provider)
 	{
-		case "kaywa":
+		case "KAYWA":
+			return mobilebarcode.prefixURL_kaywa(name,type);
 		break;
-		case "google":
+		case "GOOGLE":
+			return mobilebarcode.prefixURL_google(name,type);
 		break;
-		case "nokia":
+		case "NOKIA":
 			return mobilebarcode.prefixURL_nokia(name,type);
 		break;
 		default:
-			return mobilebarcode.prefixURL_nokia(name,type);
+			return mobilebarcode.prefixURL_google(name,type);
 		break;
 	}
-}
+};
 
 mobilebarcode.prefixURL_google = function(name, type)
 {
@@ -247,6 +249,7 @@ mobilebarcode.init = function()
 	
 	mobilebarcode.codetype = mobilebarcode.prefs.getCharPref("type").toUpperCase();
 	mobilebarcode.provider = mobilebarcode.prefs.getCharPref("provider").toUpperCase();
+	mobilebarcode.codesize = mobilebarcode.prefs.getCharPref("size").toUpperCase();
 	
 	menu = document.getElementById("contentAreaContextMenu");
 //	if (menu)
@@ -300,7 +303,7 @@ mobilebarcode.uninit = function()
 };
 
 mobilebarcode.draw = function()
-{
+{	
 	if (gContextMenu)
 	{
 		gContextMenu.showItem("mobilebarcode-context-selection", gContextMenu.isTextSelected);
@@ -366,7 +369,7 @@ function get_selected_text()
 	var focused_window = document.commandDispatcher.focusedWindow;
 	var sel_text = focused_window.getSelection();
 	return sel_text.toString();
-}
+};
 
 window.addEventListener("load", function(e) { mobilebarcode.init(); }, false);
 // The unload event causes the extension to stop functioning on all already loaded pages when one page is closed.
