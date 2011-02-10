@@ -195,20 +195,20 @@ mobilebarcode.getBarcode = function()
 	var barcode = document.getElementById ( 'mobilebarcode-status-image' );
 //	barcode.src = "http://www.sample.org.uk/mobilebarcoder/gen.php?data=" + 
 //					mobilebarcode.URLEncode(theurl);
-	barcode.src = mobilebarcode.prefixURL("","LINK") + URLEncode(theurl);
+	barcode.src = mobilebarcode.prefixURL("","LINK") + mobilebarcode.URLEncode(theurl);
 	return;
 };
 
 mobilebarcode.getBarcodeFromSelection = function()
 {
-	var sel_text = get_selected_text();
-	openNewTabWith(mobilebarcode.prefixURL("","") + URLEncode(sel_text), null, null, false);
+	var sel_text = mobilebarcode.get_selected_text();
+	openNewTabWith(mobilebarcode.prefixURL("","") + mobilebarcode.URLEncode(sel_text), null, null, false);
 };
 mobilebarcode.showBarcodeFromSelection = function()
 {
-	var sel_text = get_selected_text();
+	var sel_text = mobilebarcode.get_selected_text();
 	image = document.getElementById("mobilebarcode-context-selection-image");
-	image.src = mobilebarcode.prefixURL("","") + URLEncode(sel_text);
+	image.src = mobilebarcode.prefixURL("","") + mobilebarcode.URLEncode(sel_text);
 };
 
 mobilebarcode.getBarcodeFromLink = function()
@@ -221,7 +221,7 @@ mobilebarcode.getBarcodeFromLink = function()
 			sel_text = gContextMenu.linkURL()
 		}
 		//var sel_text = gContextMenu.linkURL;
-		openNewTabWith(mobilebarcode.prefixURL("","") + URLEncode(sel_text), null, null, false);
+		openNewTabWith(mobilebarcode.prefixURL("","") + mobilebarcode.URLEncode(sel_text), null, null, false);
 	}
 };
 mobilebarcode.showBarcodeFromLink = function()
@@ -234,7 +234,7 @@ mobilebarcode.showBarcodeFromLink = function()
 			sel_text = gContextMenu.linkURL()
 		}
 		image = document.getElementById("mobilebarcode-context-link-image");
-		image.src = mobilebarcode.prefixURL("","") + URLEncode(sel_text);
+		image.src = mobilebarcode.prefixURL("","") + mobilebarcode.URLEncode(sel_text);
 	}
 };
 
@@ -326,7 +326,7 @@ mobilebarcode.draw = function()
 //
 // If you find or fix any bugs, please let us know at albionresearch.com
 // ====================================================================
-function URLEncode(plaintext)
+mobilebarcode.URLEncode = function(plaintext)
 {
 	// The Javascript escape and unescape functions do not correspond
 	// with what browsers actually do...
@@ -364,7 +364,7 @@ function URLEncode(plaintext)
 };
 
 // This function is from Right-Click-Link
-function get_selected_text()
+mobilebarcode.get_selected_text = function()
 {
 	var focused_window = document.commandDispatcher.focusedWindow;
 	var sel_text = focused_window.getSelection();
