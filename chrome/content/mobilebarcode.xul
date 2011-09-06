@@ -5,25 +5,23 @@
 	
 	<script type="application/x-javascript" src="chrome://mobilebarcode/content/mobilebarcode.js" />
 	
-	<statusbar id="status-bar">
-		<image id="mobilebarcode-image-your" src=""
-               popup="mobilebarcode-popup-menu"
-               tooltip="mobilebarcode-tooltip" />
-		<popupset>
-			<tooltip id="mobilebarcode-tooltip" 
-			         onpopupshowing="mobilebarcode.getBarcode()" 
-			         noautohide="true">
-				<vbox>
-					<image id="mobilebarcode-status-image" src="" />
-				</vbox>
-			</tooltip>
-		</popupset>
-		<statusbarpanel class="statusbarpanel-iconic" id="mobilebarcode-status-panel"
-				src="chrome://mobilebarcode/skin/icon-link.png"
-				label="&mobilebarcode.barcode;"
-				tooltip="mobilebarcode-tooltip" />
+	<popupset>
+		<tooltip id="mobilebarcode-tooltip" 
+		onpopupshowing="mobilebarcode.getBarcode<>" 
+		noautohide="true">
+			<vbox>
+				<image id="mobilebarcode-status-image" src="" />
+			</vbox>
+		</tooltip>
+	</popupset>
 
-	</statusbar>
+	<toolbarpalette id="BrowserToolbarPalette">
+		<toolbarbutton id="mobilebarcode-status-panel"
+		image="chrome://mobilebarcode/skin/icon-link.png"
+		label="&mobilebarcode.barcode;"
+		tooltip="mobilebarcode-tooltip"
+		class="toolbarbutton-1 chromeclass-toolbar-additional" />
+	</toolbarpalette>
 	
 	<popup id="contentAreaContextMenu">
 		<!--
