@@ -7,7 +7,7 @@
 	
 	<popupset>
 		<tooltip id="mobilebarcode-tooltip" 
-		onpopupshowing="mobilebarcode.getBarcode<>" 
+		onpopupshowing="mobilebarcode.getBarcode()" 
 		noautohide="true">
 			<vbox>
 				<image id="mobilebarcode-status-image" src="" />
