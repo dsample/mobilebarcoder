@@ -1,0 +1,22 @@
+<!ENTITY mobilebarcode.about "Über">
+<!ENTITY mobilebarcode.options "Optionen">
+
+<!ENTITY mobilebarcode.prefs.title "Mobile Barcoder Optionen">
+<!ENTITY mobilebarcode.prefs.style "Barcode Typ">
+<!ENTITY mobilebarcode.prefs.size "Größe">
+<!ENTITY mobilebarcode.prefs.s.label "Klein">
+<!ENTITY mobilebarcode.prefs.m.label "Mittel">
+<!ENTITY mobilebarcode.prefs.l.label "Groß">
+
+<!ENTITY mobilebarcode.prefs.s.accesskey "K">
+<!ENTITY mobilebarcode.prefs.m.accesskey "M">
+<!ENTITY mobilebarcode.prefs.l.accesskey "G">
+<!ENTITY mobilebarcode.prefs.xl.accesskey "1">
+<!ENTITY mobilebarcode.prefs.xxl.accesskey "2">
+
+<!ENTITY mobilebarcode.createfromselection "Erstelle Barcode aus der Auswahl">
+<!ENTITY mobilebarcode.createfromlink "Erstelle Barcode aus Link">
+
+<!ENTITY mobilebarcode.about.description "Mobile Barcoder erstellt 2D Barcodes aus URL's oder Textausschnitten, um diese einfach auf das Handy zu übertragen.">
+<!ENTITY mobilebarcode.about.createdby "Erstellt von">
+<!ENTITY mobilebarcode.about.contributors "Mitwirkende">

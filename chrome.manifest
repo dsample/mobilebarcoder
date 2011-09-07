@@ -4,3 +4,5 @@ content	mobilebarcode	chrome/content/
 skin	mobilebarcode	classic/1.0	chrome/skin/
 locale	mobilebarcode	en	chrome/locale/en/
 locale	mobilebarcode	en-GB	chrome/locale/en/
+locale	mobilebarcode	de	chrome/locale/de/
+locale	mobilebarcode	jp	chrome/locale/jp/
