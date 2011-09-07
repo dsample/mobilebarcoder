@@ -8,6 +8,41 @@ mobilebarcode.provider = "";
 //mobilebarcode.prefixURL = "http://mobilecodes.nokia.com/qr?MODULE_SIZE=6&name=&MARGIN=10&ENCODING=BYTE&MODE=TEXT&a=view&DATA=";
 //mobilebarcode.prefixURL = function(size="6", name="", margin="10", type="LINK")
 
+/**
+ * Installs the toolbar button with the given ID into the given
+ * toolbar, if it is not already present in the document.
+ *
+ * @param {string} toolbarId The ID of the toolbar to install to.
+ * @param {string} id The ID of the button to install.
+ * @param {string} afterId The ID of the element to insert after. @optional
+ */
+
+/*
+function installButton(toolbarId, id, afterId) {
+    if (!document.getElementById(id)) {
+        var toolbar = document.getElementById(toolbarId);
+
+        var before = toolbar.firstChild;
+        if (afterId) {
+            let elem = document.getElementById(afterId);
+            if (elem && elem.parentNode == toolbar)
+                before = elem.nextElementSibling;
+        }
+
+        toolbar.insertItem(id, before);
+        toolbar.setAttribute("currentset", toolbar.currentSet);
+        document.persist(toolbar.id, "currentset");
+
+        if (toolbarId == "addon-bar")
+            toolbar.collapsed = false;
+    }
+}
+
+if (firstRun) {
+    installButton("nav-bar", "mobilebarcode-status-panel", "urlbar");
+}
+*/
+
 mobilebarcode.prefixURL = function(name,type)
 {
 	switch (mobilebarcode.provider)
@@ -189,6 +224,12 @@ mobilebarcode.prefixURL_nokia = function(name, type)
 	return prefix;
 };
 
+mobilebarcode.getBarcodeURL = function()
+{
+	var theurl = getBrowser().contentWindow.location.href;
+	return mobilebarcode.prefixURL("","LINK") + mobilebarcode.URLEncode(theurl);
+}
+
 mobilebarcode.getBarcode = function()
 {
 	var theurl = getBrowser().contentWindow.location.href;
@@ -328,6 +369,8 @@ mobilebarcode.draw = function()
 // ====================================================================
 mobilebarcode.URLEncode = function(plaintext)
 {
+	return encodeURIComponent(plaintext);
+	/*
 	// The Javascript escape and unescape functions do not correspond
 	// with what browsers actually do...
 	var SAFECHARS = "0123456789" +					// Numeric
@@ -361,6 +404,7 @@ mobilebarcode.URLEncode = function(plaintext)
 	} // for
 
 	return encoded;
+	*/
 };
 
 // This function is from Right-Click-Link

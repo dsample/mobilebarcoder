@@ -20,6 +20,7 @@
 		image="chrome://mobilebarcode/skin/icon-link.png"
 		label="&mobilebarcode.barcode;"
 		tooltip="mobilebarcode-tooltip"
+		oncommand="openURL(mobilebarcode.getBarcodeURL());"
 		class="toolbarbutton-1 chromeclass-toolbar-additional" />
 	</toolbarpalette>
 	
