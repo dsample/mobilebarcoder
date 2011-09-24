@@ -415,6 +415,32 @@ mobilebarcode.get_selected_text = function()
 	return sel_text.toString();
 };
 
+mobilebarcode.displayAbout = function()
+{
+    Components.utils.import("resource://gre/modules/AddonManager.jsm");    
+      
+    AddonManager.getAddonByID("{A5C87640-F7CF-11DA-974D-0800200C9A66}", function(addon) {  
+		var addonAboutURL = addon.aboutURL;
+		// if custom aboutURL specified use it, otherwise use default
+		if (addonAboutURL)
+			window.openDialog(addonAboutURL, '', 'chrome,centerscreen,modal', addon);
+		else
+			window.openDialog('chrome://mozapps/content/extensions/about.xul', '', 'chrome,centerscreen,modal', addon);
+    });  
+}
+
+mobilebarcode.displayOptions = function()
+{
+	window.openDialog('chrome://mobilebarcode/content/options.xul','optionsdialog','chrome,centerscreen,modal')
+}
+
+mobilebarcode.showPopup = function()
+{
+	//Note: openPopupAtScreen and openPopup require Firefox 3.0 or later (Gecko 1.9 == Firefox 3.0)
+	var thetoolbarbutton = document.getElementById('mobilebarcode-status-panel');
+	document.getElementById('mobilebarcode-tooltip').openPopup(thetoolbarbutton, 'after_start', 0, 0, false, false);
+}
+
 window.addEventListener("load", function(e) { mobilebarcode.init(); }, false);
 // The unload event causes the extension to stop functioning on all already loaded pages when one page is closed.
 //window.addEventListener("unload", mobilebarcode.uninit, false);
