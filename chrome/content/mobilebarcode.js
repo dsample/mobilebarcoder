@@ -64,6 +64,8 @@ mobilebarcode.prefixURL = function(name,type)
 
 mobilebarcode.prefixURL_google = function(name, type)
 {
+	var sizenumber, prefix;
+
 	switch(mobilebarcode.codesize)
 	{
 		case "S":
@@ -103,7 +105,8 @@ mobilebarcode.prefixURL_kaywa = function(name, type)
 {
 	// For text, maximum 250 characters
 	// Would be good to show a 'too big' image if they select too much text
-	
+	var sizenumber, prefix;
+
 	switch(mobilebarcode.codesize)
 	{
 		case "S":
@@ -144,6 +147,8 @@ mobilebarcode.prefixURL_kaywa = function(name, type)
 
 mobilebarcode.prefixURL_nokia = function(name, type)
 {
+	var sizenumber, prefix;
+
 	switch(mobilebarcode.codetype)
 	{
 		case "DM":
@@ -245,10 +250,11 @@ mobilebarcode.getBarcodeFromSelection = function()
 	var sel_text = mobilebarcode.get_selected_text();
 	openNewTabWith(mobilebarcode.prefixURL("","") + mobilebarcode.URLEncode(sel_text), null, null, false);
 };
+
 mobilebarcode.showBarcodeFromSelection = function()
 {
 	var sel_text = mobilebarcode.get_selected_text();
-	image = document.getElementById("mobilebarcode-context-selection-image");
+	var image = document.getElementById("mobilebarcode-context-selection-image");
 	image.src = mobilebarcode.prefixURL("","") + mobilebarcode.URLEncode(sel_text);
 };
 
@@ -256,6 +262,7 @@ mobilebarcode.getBarcodeFromLink = function()
 {
 	if (gContextMenu)
 	{
+		var sel_text;
 		if (typeof(gContextMenu.linkURL)=='string') {
 			sel_text = gContextMenu.linkURL
 		} else {
@@ -265,10 +272,12 @@ mobilebarcode.getBarcodeFromLink = function()
 		openNewTabWith(mobilebarcode.prefixURL("","") + mobilebarcode.URLEncode(sel_text), null, null, false);
 	}
 };
+
 mobilebarcode.showBarcodeFromLink = function()
 {
 	if (gContextMenu)
 	{
+		var sel_text, image;
 		if (typeof(gContextMenu.linkURL)=='string') {
 			sel_text = gContextMenu.linkURL
 		} else {
@@ -292,14 +301,14 @@ mobilebarcode.init = function()
 	mobilebarcode.provider = mobilebarcode.prefs.getCharPref("provider").toUpperCase();
 	mobilebarcode.codesize = mobilebarcode.prefs.getCharPref("size").toUpperCase();
 	
-	menu = document.getElementById("contentAreaContextMenu");
+	var menu = document.getElementById("contentAreaContextMenu");
 //	if (menu)
 //	{
 		menu.addEventListener("popupshowing", mobilebarcode.draw, false);
 //	}
 	
-	selection = document.getElementById("mobilebarcode-context-selection-popup");
-	link = document.getElementById("mobilebarcode-context-link-popup");
+	var selection = document.getElementById("mobilebarcode-context-selection-popup");
+	var link = document.getElementById("mobilebarcode-context-link-popup");
 	
 	selection.addEventListener("popupshowing", mobilebarcode.showBarcodeFromSelection, false);
 	link.addEventListener("popupshowing", mobilebarcode.showBarcodeFromLink, false);
@@ -330,7 +339,7 @@ mobilebarcode.observe = function(subject, topic, data)
 
 mobilebarcode.uninit = function()
 {
-	menu = document.getElementById("contentAreaContextMenu");
+	var menu = document.getElementById("contentAreaContextMenu");
 	if (menu)
 	{
 		menu.removeEventListener("popupshowing", mobilebarcode.draw, false);
