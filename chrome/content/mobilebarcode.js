@@ -61,6 +61,8 @@ mobilebarcode.prefixURL = function(name,type)
 
 mobilebarcode.prefixURL_google = function(name, type)
 {
+	var sizenumber, prefix;
+
 	switch(mobilebarcode.codesize)
 	{
 		case "S":
@@ -100,7 +102,8 @@ mobilebarcode.prefixURL_kaywa = function(name, type)
 {
 	// For text, maximum 250 characters
 	// Would be good to show a 'too big' image if they select too much text
-	
+	var sizenumber, prefix;
+
 	switch(mobilebarcode.codesize)
 	{
 		case "S":
@@ -139,7 +142,6 @@ mobilebarcode.prefixURL_kaywa = function(name, type)
 	return prefix;
 };
 
-
 mobilebarcode.getBarcodeURL = function()
 {
 	var theurl = getBrowser().contentWindow.location.href;
@@ -161,10 +163,11 @@ mobilebarcode.getBarcodeFromSelection = function()
 	var sel_text = mobilebarcode.get_selected_text();
 	openNewTabWith(mobilebarcode.prefixURL("","") + mobilebarcode.URLEncode(sel_text), null, null, false);
 };
+
 mobilebarcode.showBarcodeFromSelection = function()
 {
 	var sel_text = mobilebarcode.get_selected_text();
-	image = document.getElementById("mobilebarcode-context-selection-image");
+	var image = document.getElementById("mobilebarcode-context-selection-image");
 	image.src = mobilebarcode.prefixURL("","") + mobilebarcode.URLEncode(sel_text);
 };
 
@@ -172,6 +175,7 @@ mobilebarcode.getBarcodeFromLink = function()
 {
 	if (gContextMenu)
 	{
+		var sel_text;
 		if (typeof(gContextMenu.linkURL)=='string') {
 			sel_text = gContextMenu.linkURL
 		} else {
@@ -181,10 +185,12 @@ mobilebarcode.getBarcodeFromLink = function()
 		openNewTabWith(mobilebarcode.prefixURL("","") + mobilebarcode.URLEncode(sel_text), null, null, false);
 	}
 };
+
 mobilebarcode.showBarcodeFromLink = function()
 {
 	if (gContextMenu)
 	{
+		var sel_text, image;
 		if (typeof(gContextMenu.linkURL)=='string') {
 			sel_text = gContextMenu.linkURL
 		} else {
@@ -208,14 +214,14 @@ mobilebarcode.init = function()
 	mobilebarcode.provider = mobilebarcode.prefs.getCharPref("provider").toUpperCase();
 	mobilebarcode.codesize = mobilebarcode.prefs.getCharPref("size").toUpperCase();
 	
-	menu = document.getElementById("contentAreaContextMenu");
+	var menu = document.getElementById("contentAreaContextMenu");
 //	if (menu)
 //	{
 		menu.addEventListener("popupshowing", mobilebarcode.draw, false);
 //	}
 	
-	selection = document.getElementById("mobilebarcode-context-selection-popup");
-	link = document.getElementById("mobilebarcode-context-link-popup");
+	var selection = document.getElementById("mobilebarcode-context-selection-popup");
+	var link = document.getElementById("mobilebarcode-context-link-popup");
 	
 	selection.addEventListener("popupshowing", mobilebarcode.showBarcodeFromSelection, false);
 	link.addEventListener("popupshowing", mobilebarcode.showBarcodeFromLink, false);
@@ -246,7 +252,7 @@ mobilebarcode.observe = function(subject, topic, data)
 
 mobilebarcode.uninit = function()
 {
-	menu = document.getElementById("contentAreaContextMenu");
+	var menu = document.getElementById("contentAreaContextMenu");
 	if (menu)
 	{
 		menu.removeEventListener("popupshowing", mobilebarcode.draw, false);
@@ -295,6 +301,32 @@ mobilebarcode.get_selected_text = function()
 	var sel_text = focused_window.getSelection();
 	return sel_text.toString();
 };
+
+mobilebarcode.displayAbout = function()
+{
+    Components.utils.import("resource://gre/modules/AddonManager.jsm");    
+      
+    AddonManager.getAddonByID("{A5C87640-F7CF-11DA-974D-0800200C9A66}", function(addon) {  
+		var addonAboutURL = addon.aboutURL;
+		// if custom aboutURL specified use it, otherwise use default
+		if (addonAboutURL)
+			window.openDialog(addonAboutURL, '', 'chrome,centerscreen,modal', addon);
+		else
+			window.openDialog('chrome://mozapps/content/extensions/about.xul', '', 'chrome,centerscreen,modal', addon);
+    });  
+}
+
+mobilebarcode.displayOptions = function()
+{
+	window.openDialog('chrome://mobilebarcode/content/options.xul','optionsdialog','chrome,centerscreen,modal')
+}
+
+mobilebarcode.showPopup = function()
+{
+	//Note: openPopupAtScreen and openPopup require Firefox 3.0 or later (Gecko 1.9 == Firefox 3.0)
+	var thetoolbarbutton = document.getElementById('mobilebarcode-status-panel');
+	document.getElementById('mobilebarcode-tooltip').openPopup(thetoolbarbutton, 'after_start', 0, 0, false, false);
+}
 
 window.addEventListener("load", function(e) { mobilebarcode.init(); }, false);
 // The unload event causes the extension to stop functioning on all already loaded pages when one page is closed.

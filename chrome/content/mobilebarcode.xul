@@ -21,9 +21,20 @@
 		label="&mobilebarcode.barcode;"
 		tooltip="mobilebarcode-tooltip"
 		oncommand="openURL(mobilebarcode.getBarcodeURL());"
+		contextmenu="cmButton-context"
 		class="toolbarbutton-1 chromeclass-toolbar-additional" />
 	</toolbarpalette>
-	
+
+	<popupset id="mainPopupSet">
+		<menupopup id="cmButton-context">
+			<menuitem label="&mobilebarcode.barcode;" oncommand="mobilebarcode.showPopup();" class="menuitem-iconic" />
+			<menuitem label="&mobilebarcode.barcode;" oncommand="openURL(mobilebarcode.getBarcodeURL());" class="menuitem-iconic" />
+			<menuitem label="&mobilebarcode.options;" oncommand="mobilebarcode.displayOptions();" class="menuitem-iconic" />
+			<menuseparator />
+			<menuitem label="&mobilebarcode.about;" oncommand="mobilebarcode.displayAbout();" class="menuitem-iconic" />
+		</menupopup>
+	</popupset>
+
 	<popup id="contentAreaContextMenu">
 		<!--
 		<menuitem id="mobilebarcode-context-selection"
