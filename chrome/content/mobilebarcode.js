@@ -53,9 +53,6 @@ mobilebarcode.prefixURL = function(name,type)
 		case "GOOGLE":
 			return mobilebarcode.prefixURL_google(name,type);
 		break;
-		case "NOKIA":
-			return mobilebarcode.prefixURL_nokia(name,type);
-		break;
 		default:
 			return mobilebarcode.prefixURL_google(name,type);
 		break;
@@ -142,87 +139,6 @@ mobilebarcode.prefixURL_kaywa = function(name, type)
 	return prefix;
 };
 
-mobilebarcode.prefixURL_nokia = function(name, type)
-{
-	switch(mobilebarcode.codetype)
-	{
-		case "DM":
-			switch(mobilebarcode.codesize)
-			{
-				case "S":
-					sizenumber="0.12";
-				break;
-				case "M":
-					sizenumber="0.18";
-				break;
-				case "L":
-					sizenumber="0.25";
-				break;
-				case "XL":
-					sizenumber="0.50";
-				break;
-				case "XXL":
-					sizenumber="0.75";
-				break;
-				default:
-					sizenumber="0.18";
-				break;
-			}
-			prefix = "http://mobilecodes.nokia.com/dm?" +
-				"X=" + sizenumber;
-<!--
-            if (name.length>0)
-			{
-				prefix = prefix + "&name=" + name;
-			}
-			if (type.length>0)
-			{
-				prefix = prefix + "&TYPE=" + type;
-			}
--->
-			prefix = prefix + "&NDEF_DATA=&MODE=TEXT&a=view&BARCODE=";
-		break;
-		case "QR":
-		default:
-			switch(mobilebarcode.codesize)
-			{
-				case "S":
-					sizenumber="2";
-				break;
-				case "M":
-					sizenumber="4";
-				break;
-				case "L":
-					sizenumber="6";
-				break;
-				case "XL":
-					sizenumber="8";
-				break;
-				case "XXL":
-					sizenumber="10";
-				break;
-				default:
-					sizenumber="6";
-				break;
-			}
-			prefix = "http://mobilecodes.nokia.com/qr?" +
-				"MODULE_SIZE=" + sizenumber;
-<!--
-            if (name.length>0)
-			{
-				prefix = prefix + "&name=" + name;
-			}
-			if (type.length>0)
-			{
-				prefix = prefix + "&TYPE=" + type;
-			}
--->
-			prefix = prefix + "&MARGIN=0&ENCODING=BYTE&MODE=TEXT&a=view&DATA=";
-		break;
-	}
-
-	return prefix;
-};
 
 mobilebarcode.getBarcodeURL = function()
 {
@@ -370,41 +286,6 @@ mobilebarcode.draw = function()
 mobilebarcode.URLEncode = function(plaintext)
 {
 	return encodeURIComponent(plaintext);
-	/*
-	// The Javascript escape and unescape functions do not correspond
-	// with what browsers actually do...
-	var SAFECHARS = "0123456789" +					// Numeric
-					"ABCDEFGHIJKLMNOPQRSTUVWXYZ" +	// Alphabetic
-					"abcdefghijklmnopqrstuvwxyz" +
-					"-_.!~*'()";					// RFC2396 Mark characters
-	var HEX = "0123456789ABCDEF";
-
-	var encoded = "";
-	for (var i = 0; i < plaintext.length; i++ ) {
-		var ch = plaintext.charAt(i);
-	    if (ch == " ") {
-		    encoded += "+";				// x-www-urlencoded, rather than %20
-		} else if (SAFECHARS.indexOf(ch) != -1) {
-		    encoded += ch;
-		} else {
-		    var charCode = ch.charCodeAt(0);
-			if (charCode > 255) {
-//			    alert( "Unicode Character '" 
-//                        + ch 
-//                        + "' cannot be encoded using standard URL encoding.\n" +
-//				          "(URL encoding only supports 8-bit characters.)\n" +
-//						  "A space (+) will be substituted." );
-				encoded += "+";
-			} else {
-				encoded += "%";
-				encoded += HEX.charAt((charCode >> 4) & 0xF);
-				encoded += HEX.charAt(charCode & 0xF);
-			}
-		}
-	} // for
-
-	return encoded;
-	*/
 };
 
 // This function is from Right-Click-Link
