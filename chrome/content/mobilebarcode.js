@@ -148,7 +148,7 @@ mobilebarcode.getBarcodeURL = function()
 	return mobilebarcode.prefixURL("","LINK") + mobilebarcode.URLEncode(theurl);
 }
 
-mobilebarcode.getBarcode = function()
+mobilebarcode.showBarcode = function()
 {
 	var url = mobilebarcode.getBarcodeURL();
 	var barcode = document.getElementById ( 'mobilebarcode-status-image' );
