@@ -150,11 +150,11 @@ mobilebarcode.getBarcodeURL = function()
 
 mobilebarcode.getBarcode = function()
 {
-	var theurl = getBrowser().contentWindow.location.href;
+	var url = mobilebarcode.getBarcodeURL();
 	var barcode = document.getElementById ( 'mobilebarcode-status-image' );
 //	barcode.src = "http://www.sample.org.uk/mobilebarcoder/gen.php?data=" + 
 //					mobilebarcode.URLEncode(theurl);
-	barcode.src = mobilebarcode.prefixURL("","LINK") + mobilebarcode.URLEncode(theurl);
+	barcode.src = url;
 	return;
 };
 
@@ -166,13 +166,13 @@ mobilebarcode.getBarcodeURLFromSelection = function()
 
 mobilebarcode.openBarcodeFromSelection = function()
 {
-	var url = mobilebarcode.getBarcodeURLFromSelection()
+	var url = mobilebarcode.getBarcodeURLFromSelection();
 	openNewTabWith(url, null, null, false);
 };
 
 mobilebarcode.showBarcodeFromSelection = function()
 {
-	var url = mobilebarcode.getBarcodeURLFromSelection()
+	var url = mobilebarcode.getBarcodeURLFromSelection();
 	var image = document.getElementById("mobilebarcode-context-selection-image");
 	image.src = url;
 };
