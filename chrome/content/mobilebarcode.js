@@ -158,20 +158,26 @@ mobilebarcode.getBarcode = function()
 	return;
 };
 
-mobilebarcode.getBarcodeFromSelection = function()
+mobilebarcode.getBarcodeURLFromSelection = function()
 {
 	var sel_text = mobilebarcode.get_selected_text();
-	openNewTabWith(mobilebarcode.prefixURL("","") + mobilebarcode.URLEncode(sel_text), null, null, false);
+	return mobilebarcode.prefixURL("","") + mobilebarcode.URLEncode(sel_text);
+};
+
+mobilebarcode.openBarcodeFromSelection = function()
+{
+	var url = mobilebarcode.getBarcodeURLFromSelection()
+	openNewTabWith(url, null, null, false);
 };
 
 mobilebarcode.showBarcodeFromSelection = function()
 {
-	var sel_text = mobilebarcode.get_selected_text();
+	var url = mobilebarcode.getBarcodeURLFromSelection()
 	var image = document.getElementById("mobilebarcode-context-selection-image");
-	image.src = mobilebarcode.prefixURL("","") + mobilebarcode.URLEncode(sel_text);
+	image.src = url;
 };
 
-mobilebarcode.getBarcodeFromLink = function()
+mobilebarcode.getBarcodeURLFromLink = function()
 {
 	if (gContextMenu)
 	{
@@ -182,22 +188,25 @@ mobilebarcode.getBarcodeFromLink = function()
 			sel_text = gContextMenu.linkURL()
 		}
 		//var sel_text = gContextMenu.linkURL;
-		openNewTabWith(mobilebarcode.prefixURL("","") + mobilebarcode.URLEncode(sel_text), null, null, false);
+		return mobilebarcode.prefixURL("","") + mobilebarcode.URLEncode(sel_text);
+	}
+	return "";
+};
+
+mobilebarcode.openBarcodeFromLink = function()
+{
+	var url = mobilebarcode.getBarcodeURLFromLink()
+	if (url != "") {
+		openNewTabWith(url, null, null, false);
 	}
 };
 
 mobilebarcode.showBarcodeFromLink = function()
 {
-	if (gContextMenu)
-	{
-		var sel_text, image;
-		if (typeof(gContextMenu.linkURL)=='string') {
-			sel_text = gContextMenu.linkURL
-		} else {
-			sel_text = gContextMenu.linkURL()
-		}
-		image = document.getElementById("mobilebarcode-context-link-image");
-		image.src = mobilebarcode.prefixURL("","") + mobilebarcode.URLEncode(sel_text);
+	var url = mobilebarcode.getBarcodeURLFromLink()
+	if (url != "") {
+		var image = document.getElementById("mobilebarcode-context-link-image");
+		image.src = url;
 	}
 };
 

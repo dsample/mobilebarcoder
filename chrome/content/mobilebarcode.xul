@@ -40,20 +40,20 @@
 		<menuitem id="mobilebarcode-context-selection"
 		          label="Create barcode from selection"
 		   	      insertafter="context-selectall"
-		          oncommand="mobilebarcode.getBarcodeFromSelection();"
+		          oncommand="mobilebarcode.openBarcodeFromSelection();"
 	              class="menuitem-iconic"
 		 		  image="chrome://mobilebarcode/skin/icon-selection.png" />
 		<menuitem id="mobilebarcode-context-link"
 		          label="Create barcode from link"
 		   	      insertafter="context-bookmarklink"
-		          oncommand="mobilebarcode.getBarcodeFromLink();"
+		          oncommand="mobilebarcode.openBarcodeFromLink();"
 	              class="menuitem-iconic"
 		 		  image="chrome://mobilebarcode/skin/icon-link.png" />
 		-->
 		<menu id="mobilebarcode-context-selection"
 		          label="&mobilebarcode.createfromselection;"
 		   	      insertafter="context-selectall"
-		          oncommand="mobilebarcode.getBarcodeFromSelection();"
+		          oncommand="mobilebarcode.openBarcodeFromSelection();"
 	              class="menuitem-iconic"
 		 		  image="chrome://mobilebarcode/skin/icon-selection.png">
 			<menupopup id="mobilebarcode-context-selection-popup">
@@ -63,7 +63,7 @@
 		<menu id="mobilebarcode-context-link"
 		          label="&mobilebarcode.createfromlink;"
 		   	      insertafter="context-bookmarklink"
-		          oncommand="mobilebarcode.getBarcodeFromLink();"
+		          oncommand="mobilebarcode.openBarcodeFromLink();"
 	              class="menuitem-iconic"
 		 		  image="chrome://mobilebarcode/skin/icon-link.png">
 			<menupopup id="mobilebarcode-context-link-popup">
